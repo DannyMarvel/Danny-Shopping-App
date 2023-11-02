@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "966756164761",
+    "project_id": "danny-shopping",
+    "storage_bucket": "danny-shopping.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966756164761:android:f9fe3741bfd1271681c408",
+        "android_client_info": {
+          "package_name": "com.example.danny_esl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966756164761-p150q96nmril9jaemcfb6hs24bnc4f61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTElA4Hov-7IlClGR7r5aqPLVzvRBS82I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966756164761-p150q96nmril9jaemcfb6hs24bnc4f61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
