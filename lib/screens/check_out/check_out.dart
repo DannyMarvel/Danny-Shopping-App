@@ -138,8 +138,8 @@ class _CheckoutState extends State<Checkout> {
                       .round()
                       .toInt();
                   String totalPrice = (value * 100).toString();
-                  // await StripeHelper.instance
-                  //     .makePayment(totalPrice.toString(), context);
+                  await StripeHelper.instance
+                     .makePayment(totalPrice.toString(), context);
                 }
               },
             )

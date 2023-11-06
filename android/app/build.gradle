@@ -53,14 +53,14 @@ android {
         versionName flutterVersionName
     }
 
-    externalNativeBuild {
-    cmake {
-        path "CMakeLists.txt"
-        version "3.10.2"
-        arguments  "-DANDROID_STL=c++_shared", "-DANDROID_NDK=C:\\Users\\user\\Downloads\\Compressed\\android-ndk-r26b"
+//     externalNativeBuild {
+//     // cmake {
+//     //     path "CMakeLists.txt"
+//     //     version "3.10.2"
+//     //     arguments  "-DANDROID_STL=c++_shared", "-DANDROID_NDK=C:\\Users\\user\\Downloads\\Compressed\\android-ndk-r26b"
         
-    }
-}
+//     // }
+// }
 
 
     

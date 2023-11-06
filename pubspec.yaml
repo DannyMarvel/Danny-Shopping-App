@@ -44,10 +44,10 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   image_picker: ^0.8.7+1
   firebase_messaging: ^14.4.0
-  #flutter_stripe: ^9.0.0+1
+  flutter_stripe: ^9.0.0+1
   http: ^0.13.5
   #flutter_native_splash: ^2.2.19
-  flutter_stripe_web: ^4.5.0
+  #flutter_stripe_web: ^4.5.0
   
 
 dev_dependencies:
