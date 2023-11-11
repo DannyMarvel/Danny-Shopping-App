@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../constants/routes.dart';
 
 import '../../firebase_helper/firebase_firestore_helper.dart';
@@ -17,7 +16,7 @@ class CategoryView extends StatefulWidget {
 }
 
 class _CategoryViewState extends State<CategoryView> {
-  List<ProductModel> productModelList = [];
+  List<ProductModel>? productModelList;
 
   bool isLoading = false;
   void getCategoryList() async {
@@ -26,7 +25,7 @@ class _CategoryViewState extends State<CategoryView> {
     });
     productModelList = await FirebaseFirestoreHelper.instance
         .getCategoryViewProduct(widget.categoryModel.id);
-    productModelList.shuffle();
+    productModelList!.shuffle();
     setState(() {
       isLoading = false;
     });
@@ -54,7 +53,7 @@ class _CategoryViewState extends State<CategoryView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: kToolbarHeight*1),
+                  const SizedBox(height: kToolbarHeight * 1),
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Row(
@@ -70,7 +69,7 @@ class _CategoryViewState extends State<CategoryView> {
                       ],
                     ),
                   ),
-                  productModelList.isEmpty
+                  productModelList!.isEmpty
                       ? const Center(
                           child: Text("Best Product is empty"),
                         )
@@ -80,7 +79,7 @@ class _CategoryViewState extends State<CategoryView> {
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
                               primary: false,
-                              itemCount: productModelList.length,
+                              itemCount: productModelList!.length,
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                       mainAxisSpacing: 20,
@@ -89,10 +88,12 @@ class _CategoryViewState extends State<CategoryView> {
                                       crossAxisCount: 2),
                               itemBuilder: (ctx, index) {
                                 ProductModel singleProduct =
-                                    productModelList[index];
+                                    productModelList![index];
                                 return Container(
                                   decoration: BoxDecoration(
-                                    color: Theme.of(context).primaryColor.withOpacity(0.3),
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(0.3),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Column(

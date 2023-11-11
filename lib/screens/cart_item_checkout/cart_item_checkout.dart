@@ -3,14 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 import '../../constants/routes.dart';
 import '../../firebase_helper/firebase_firestore_helper.dart';
 import '../../provider/app_provider.dart';
 import '../../stripe_helper/stripe_helper.dart';
 import '../../widgets/primary_button/primary_button.dart';
 import '../custom_bottom_bar/custom_botton_bar.dart';
-
 
 class CartItemCheckout extends StatefulWidget {
   const CartItemCheckout({
@@ -134,14 +132,13 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                     });
                   }
                 } else {
-                 
                   int value = double.parse(
                           appProvider.totalPriceBuyProductList().toString())
                       .round()
                       .toInt();
                   String totalPrice = (value * 100).toString();
-                  // await StripeHelper.instance
-                  //     .makePayment(totalPrice.toString(), context);
+                  await StripeHelper.instance
+                      .makePayment(totalPrice.toString(), context);
                 }
               },
             )

@@ -19,8 +19,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<CategoryModel> categoriesList = [];
-  List<ProductModel> productModelList = [];
+  List<CategoryModel>? categoriesList;
+  List<ProductModel>? productModelList;
 
   bool isLoading = false;
   @override
@@ -39,18 +39,19 @@ class _HomeState extends State<Home> {
     categoriesList = await FirebaseFirestoreHelper.instance.getCategories();
     productModelList = await FirebaseFirestoreHelper.instance.getBestProducts();
 //shuffle means random
-    productModelList.shuffle();
+    productModelList!.shuffle();
     if (mounted) {
       setState(() {
         isLoading = false;
       });
     }
   }
+
 //Now we create a search function
   TextEditingController search = TextEditingController();
   List<ProductModel> searchList = [];
   void searchProducts(String value) {
-    searchList = productModelList
+    searchList = productModelList!
         .where((element) =>
             element.name.toLowerCase().contains(value.toLowerCase()))
         .toList();
@@ -100,14 +101,14 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  categoriesList.isEmpty
+                  categoriesList!.isEmpty
                       ? const Center(
                           child: Text("Categories is empty"),
                         )
                       : SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children: categoriesList
+                            children: categoriesList!
                                 .map(
                                   (e) => Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
@@ -156,7 +157,7 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 12.0,
                   ),
-//The Search Results Function 
+//The Search Results Function
                   search.text.isNotEmpty && searchList.isEmpty
                       ? const Center(
                           child: Text("No Product Found"),
@@ -180,7 +181,9 @@ class _HomeState extends State<Home> {
                                         searchList[index];
                                     return Container(
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).primaryColor.withOpacity(0.3),
+                                        color: Theme.of(context)
+                                            .primaryColor
+                                            .withOpacity(0.3),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
@@ -230,7 +233,7 @@ class _HomeState extends State<Home> {
                                     );
                                   }),
                             )
-                          : productModelList.isEmpty
+                          : productModelList!.isEmpty
                               ? const Center(
                                   child: Text("Best Product is empty"),
                                 )
@@ -241,7 +244,7 @@ class _HomeState extends State<Home> {
                                           const EdgeInsets.only(bottom: 50),
                                       shrinkWrap: true,
                                       primary: false,
-                                      itemCount: productModelList.length,
+                                      itemCount: productModelList!.length,
                                       gridDelegate:
                                           const SliverGridDelegateWithFixedCrossAxisCount(
                                               mainAxisSpacing: 20,
@@ -250,10 +253,12 @@ class _HomeState extends State<Home> {
                                               crossAxisCount: 2),
                                       itemBuilder: (ctx, index) {
                                         ProductModel singleProduct =
-                                            productModelList[index];
+                                            productModelList![index];
                                         return Container(
                                           decoration: BoxDecoration(
-                                            color:Theme.of(context).primaryColor.withOpacity(0.3),
+                                            color: Theme.of(context)
+                                                .primaryColor
+                                                .withOpacity(0.3),
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
