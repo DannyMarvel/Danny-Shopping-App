@@ -34,8 +34,6 @@ class _AccountScreenState extends State<AccountScreen> {
             color: Colors.black,
           ),
         ),
-        
-        
       ),
       body: Column(
         children: [
@@ -52,7 +50,6 @@ class _AccountScreenState extends State<AccountScreen> {
                             NetworkImage(appProvider.getUserInformation.image!),
                         radius: 60,
                       ),
-                      
                 Text(
                   appProvider.getUserInformation.name,
                   style: const TextStyle(
@@ -127,9 +124,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 const SizedBox(
                   height: 12.0,
                 ),
-                const Text("Version 1.0.0"),
-                
-
+                const Text("Version 1.0.0")
               ],
             ),
           ),

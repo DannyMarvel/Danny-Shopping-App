@@ -25,82 +25,84 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TopTitles(
-                title: 'Login', subtitle: 'Welcome Back to Dynamic Ecommerce'),
-            SizedBox(
-              height: 46,
-            ),
-            TextFormField(
-               controller: email,
-              decoration: InputDecoration(
-                hintText: 'Enter Your Email',
-                prefixIcon: Icon(
-                  Icons.email_outlined,
-                ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopTitles(
+                  title: 'Login', subtitle: 'Welcome Back to Dynamic Ecommerce'),
+              SizedBox(
+                height: 46,
               ),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            TextFormField(
-               controller: password,
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Enter Your Password',
-                prefixIcon: Icon(
-                  Icons.password_sharp,
-                ),
-                suffixIcon: CupertinoButton(
-                  onPressed: () {
-                    //we assigned it to true, so we can link it with ObsecureText
-                    isShowPassword = !isShowPassword;
-                  },
-                  padding: EdgeInsets.zero,
-                  child: Icon(
-                    Icons.visibility,
-                    color: Colors.grey,
+              TextFormField(
+                 controller: email,
+                decoration: InputDecoration(
+                  hintText: 'Enter Your Email',
+                  prefixIcon: Icon(
+                    Icons.email_outlined,
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 36),
-            PrimaryButton(
-              title: 'Login',
-              onPressed: () async {
-                bool isValidated = loginValidation(email.text, password.text);
-                if (isValidated) {
-                  bool isLogined = await FirebaseAuthHelper.instance
-                      .login(email.text, password.text, context);
-
-                  if (isLogined) {
-                    Routes.instance
-                        .pushAndRemoveUntil(widget: Home(), context: context);
-                  }
-                }
-              },
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            Text('Don\'t have an account?'),
-            SizedBox(
-              height: 12,
-            ),
-            CupertinoButton(
-              onPressed: () {
-                Routes.instance.push(widget: SignUp(), context: context);
-              },
-              child: Text(
-                'Sign Up',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+              SizedBox(
+                height: 12,
+              ),
+              TextFormField(
+                 controller: password,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Enter Your Password',
+                  prefixIcon: Icon(
+                    Icons.password_sharp,
+                  ),
+                  suffixIcon: CupertinoButton(
+                    onPressed: () {
+                      //we assigned it to true, so we can link it with ObsecureText
+                      isShowPassword = !isShowPassword;
+                    },
+                    padding: EdgeInsets.zero,
+                    child: Icon(
+                      Icons.visibility,
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 36),
+              PrimaryButton(
+                title: 'Login',
+                onPressed: () async {
+                  bool isValidated = loginValidation(email.text, password.text);
+                  if (isValidated) {
+                    bool isLogined = await FirebaseAuthHelper.instance
+                        .login(email.text, password.text, context);
+        
+                    if (isLogined) {
+                      Routes.instance
+                          .pushAndRemoveUntil(widget: Home(), context: context);
+                    }
+                  }
+                },
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Text('Don\'t have an account?'),
+              SizedBox(
+                height: 12,
+              ),
+              CupertinoButton(
+                onPressed: () {
+                  Routes.instance.push(widget: SignUp(), context: context);
+                },
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

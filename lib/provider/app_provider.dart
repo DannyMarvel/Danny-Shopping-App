@@ -17,7 +17,7 @@ class AppProvider with ChangeNotifier {
   final List<ProductModel> _cartProductList = [];
   final List<ProductModel> _buyProductList = [];
 
-  UserModel? _userModel;
+   UserModel? _userModel;
 
   UserModel get getUserInformation => _userModel!;
 
