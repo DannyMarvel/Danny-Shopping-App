@@ -70,10 +70,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                             .removeFavouriteProduct(widget.singleProduct);
                       }
                     },
-                    icon: Icon(appProvider.getFavouriteProductList
-                            .contains(widget.singleProduct)
-                        ? Icons.favorite
-                        : Icons.favorite_border),
+                    icon: Icon(
+                        appProvider.getFavouriteProductList
+                                .contains(widget.singleProduct)
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: Colors.red),
                   ),
                 ],
               ),
@@ -131,7 +133,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-  //Copywith copies the number of quantity and makes it uniform with others                    
+                      //Copywith copies the number of quantity and makes it uniform with others
                       ProductModel productModel =
                           widget.singleProduct.copyWith(qty: qty);
                       appProvider.addCartProduct(productModel);
