@@ -65,14 +65,23 @@ class FirebaseFirestoreHelper {
     }
   }
 
-  Future<UserModel> getUserInformation() async {
+  Future<UserModel?> getUserInformation() async {
     DocumentSnapshot<Map<String, dynamic>> querySnapshot =
         await _firebaseFirestore
             .collection("users")
             .doc(FirebaseAuth.instance.currentUser!.uid)
             .get();
+// if (querySnapshot.exists) {
+//     // If the document exists, return the UserModel
+//     return UserModel.fromJson(querySnapshot.data()!);
+//   } else {
+//     // If the document doesn't exist, return null or handle the case accordingly
+//     return null;
+//   }
 
-    return UserModel.fromJson(querySnapshot.data()!);
+
+
+  return UserModel.fromJson(querySnapshot.data()!);
   }
 
   Future<bool> uploadOrderedProductFirebase(
