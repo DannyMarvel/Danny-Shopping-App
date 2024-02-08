@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../constants/routes.dart';
 import '../../firebase_helper/firebase_firestore_helper.dart';
 import '../../provider/app_provider.dart';
-//import '../../stripe_helper/stripe_helper.dart';
+import '../../stripe_helper/stripe_helper.dart';
 import '../../widgets/primary_button/primary_button.dart';
 import '../custom_bottom_bar/custom_botton_bar.dart';
 
@@ -24,7 +24,7 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
   @override
   Widget build(BuildContext context) {
     AppProvider appProvider = Provider.of<AppProvider>(
-      context,
+      context, 
     );
     return Scaffold(
       appBar: AppBar(
@@ -137,8 +137,8 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                       .round()
                       .toInt();
                   String totalPrice = (value * 100).toString();
-                  // await StripeHelper.instance
-                  //     .makePayment(totalPrice.toString(), context);
+                  await StripeHelper.instance
+                      .makePayment(totalPrice.toString(), context);
                 }
               },
             )

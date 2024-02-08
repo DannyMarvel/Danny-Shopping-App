@@ -2,11 +2,10 @@ import 'package:danny_esl/screens/favourite_screen/widget/single_favorite_item.d
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 import '../../provider/app_provider.dart';
 
 class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key}); 
+  const FavouriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

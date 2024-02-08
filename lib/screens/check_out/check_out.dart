@@ -5,7 +5,7 @@ import '../../constants/routes.dart';
 import '../../firebase_helper/firebase_firestore_helper.dart';
 import '../../models/product_model/product_model.dart';
 import '../../provider/app_provider.dart';
-//import '../../stripe_helper/stripe_helper.dart';
+import '../../stripe_helper/stripe_helper.dart';
 import '../../widgets/primary_button/primary_button.dart';
 import '../custom_bottom_bar/custom_botton_bar.dart';
 
@@ -112,6 +112,8 @@ class _CheckoutState extends State<Checkout> {
             const SizedBox(
               height: 24.0,
             ),
+
+          
             PrimaryButton(
               title: "Continues",
               onPressed: () async {
@@ -138,8 +140,8 @@ class _CheckoutState extends State<Checkout> {
                       .round()
                       .toInt();
                   String totalPrice = (value * 100).toString();
-                  // await StripeHelper.instance
-                  //    .makePayment(totalPrice.toString(), context);
+                  await StripeHelper.instance
+                     .makePayment(totalPrice.toString(), context);
                 }
               },
             )

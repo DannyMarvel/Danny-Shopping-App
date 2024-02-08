@@ -24,6 +24,7 @@ class _AccountScreenState extends State<AccountScreen> {
     AppProvider appProvider = Provider.of<AppProvider>(
       context,
     );
+    print('getinfomation: ${appProvider.getUserInformation}');
 
     return Scaffold(
       appBar: AppBar(
@@ -51,18 +52,18 @@ class _AccountScreenState extends State<AccountScreen> {
                 //         radius: 60,
                 //       ),
                 // Text(
-                //   appProvider.getUserInformation.name,
+                //   appProvider.getUserInformation.name!,
                 //   style: const TextStyle(
                 //     fontSize: 22,
                 //     fontWeight: FontWeight.bold,
                 //   ),
                 // ),
                 // Text(
-                //   appProvider.getUserInformation.email,
+                //   appProvider.getUserInformation.email!,
                 // ),
-                // const SizedBox(
-                //   height: 12.0,
-                // ),
+                const SizedBox(
+                  height: 12.0,
+                ),
                 SizedBox(
                   width: 130,
                   child: PrimaryButton(

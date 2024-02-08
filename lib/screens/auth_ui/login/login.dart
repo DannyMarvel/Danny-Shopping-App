@@ -90,6 +90,15 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 12,
               ),
+              SizedBox(
+                height: 12,
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              SizedBox(
+                height: 12,
+              ),
               CupertinoButton(
                 onPressed: () {
                   Routes.instance.push(widget: SignUp(), context: context);

@@ -9,7 +9,6 @@ import '../models/order_model/order_model.dart';
 import '../models/product_model/product_model.dart';
 import '../models/user_model/user_model.dart';
 
-
 class FirebaseFirestoreHelper {
   static FirebaseFirestoreHelper instance = FirebaseFirestoreHelper();
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
@@ -79,9 +78,7 @@ class FirebaseFirestoreHelper {
 //     return null;
 //   }
 
-
-
-  return UserModel.fromJson(querySnapshot.data()!);
+    return UserModel.fromJson(querySnapshot.data()!);
   }
 
   Future<bool> uploadOrderedProductFirebase(
